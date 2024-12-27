@@ -1,13 +1,15 @@
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <locale.h>
 
 void ConversorDeComprimento();
 void ConversorDeTemperatura();
 void ConversorDeVelocidade();
 void ConversorDeVolume();
+void ConversorDeArea();
 void ConversorDeArmazenamento();
- void ConversorPotCv ();
+void ConversorPotCv ();
+
 int main() {
     setlocale(LC_ALL, "portuguese"); 
     int opcao = 0;
@@ -56,7 +58,7 @@ int main() {
                 //conversor de potencia
                 break;
             case 7:
-                //conversor de area
+                ConversorDeArea();
                 break;
             case 8:
                 //conversor de tempo
@@ -228,6 +230,46 @@ void ConversorDeVelocidade () {
     }
 }
 
+void ConversorDeArea() {
+    float metrosQuadrados, centimetrosQuadrados;
+    int opcao;
+
+    do {
+
+        printf("\nEscolha uma opcao de conversao:\n");
+        printf("1. Converter de metros quadrados para centimetros quadrados\n");
+        printf("2. Converter de centimetros quadrados para metros quadrados\n");
+        printf("3. Sair\n");
+        printf("Digite sua opcao (1, 2 ou 3): ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Digite o valor em metros quadrados: ");
+                scanf("%f", &metrosQuadrados);
+                centimetrosQuadrados = metrosQuadrados * 10000;
+                printf("%.2f metros quadrados equivalem a %.2f centimetros quadrados.\n", metrosQuadrados, centimetrosQuadrados);
+                break;
+
+            case 2:
+                printf("Digite o valor em centimetros quadrados: ");
+                scanf("%f", &centimetrosQuadrados);
+                metrosQuadrados = centimetrosQuadrados / 10000;
+                printf("%.2f centimetros quadrados equivalem a %.2f metros quadrados.\n", centimetrosQuadrados, metrosQuadrados);
+                break;
+
+            case 3:
+                printf("Encerrando o programa. Ate logo!\n");
+                break;
+
+            default:
+                printf("Opcao invalida! Por favor, escolha uma opcao valida.\n");
+        }
+
+    } while (opcao != 3); 
+    return 0;
+}
+
 void ConversorDeVolume () {
     int choice;
     double value;
@@ -383,9 +425,7 @@ void ConversorDeArmazenamento () {
     printf("# Resultado: %.6lf\n", resultado);
 }
  void ConversorPotCv ()
- {
-int main()
-{
+    {
     int opcao;
     float valor, resultado;
     char repetir;
@@ -452,4 +492,4 @@ int main()
     printf("Obrigada!\n");
 }
 
- }
+ 
